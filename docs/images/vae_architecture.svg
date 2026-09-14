@@ -1,0 +1,54 @@
+<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="900" height="320" fill="#0f172a"/>
+
+  <!-- Input -->
+  <rect x="20" y="120" width="100" height="80" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2"/>
+  <text x="70" y="165" fill="#e2e8f0" font-size="14" text-anchor="middle">Input x</text>
+  <text x="70" y="182" fill="#93c5fd" font-size="11" text-anchor="middle">(28x28)</text>
+
+  <!-- Encoder -->
+  <rect x="160" y="100" width="140" height="120" rx="8" fill="#134e4a" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="230" y="150" fill="#e2e8f0" font-size="15" text-anchor="middle">Encoder</text>
+  <text x="230" y="170" fill="#5eead4" font-size="11" text-anchor="middle">q(z|x)</text>
+  <text x="230" y="188" fill="#5eead4" font-size="10" text-anchor="middle">Conv/FC layers</text>
+
+  <!-- mu / sigma -->
+  <rect x="340" y="70" width="90" height="45" rx="6" fill="#3730a3" stroke="#818cf8" stroke-width="2"/>
+  <text x="385" y="97" fill="#e0e7ff" font-size="13" text-anchor="middle">mu</text>
+
+  <rect x="340" y="205" width="90" height="45" rx="6" fill="#3730a3" stroke="#818cf8" stroke-width="2"/>
+  <text x="385" y="232" fill="#e0e7ff" font-size="13" text-anchor="middle">log(var)</text>
+
+  <!-- reparam -->
+  <circle cx="500" cy="160" r="42" fill="#7c2d12" stroke="#fb923c" stroke-width="2"/>
+  <text x="500" y="155" fill="#fed7aa" font-size="12" text-anchor="middle">z = mu +</text>
+  <text x="500" y="170" fill="#fed7aa" font-size="12" text-anchor="middle">sigma*eps</text>
+
+  <!-- decoder -->
+  <rect x="580" y="100" width="140" height="120" rx="8" fill="#134e4a" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="650" y="150" fill="#e2e8f0" font-size="15" text-anchor="middle">Decoder</text>
+  <text x="650" y="170" fill="#5eead4" font-size="11" text-anchor="middle">p(x|z)</text>
+  <text x="650" y="188" fill="#5eead4" font-size="10" text-anchor="middle">FC/ConvT layers</text>
+
+  <!-- output -->
+  <rect x="760" y="120" width="120" height="80" rx="8" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2"/>
+  <text x="820" y="155" fill="#e2e8f0" font-size="14" text-anchor="middle">Reconstruction</text>
+  <text x="820" y="175" fill="#93c5fd" font-size="12" text-anchor="middle">x_hat</text>
+
+  <!-- arrows -->
+  <path d="M120,160 L160,160" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M300,140 L340,93" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M300,180 L340,227" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M430,93 L470,145" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M430,227 L470,175" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M542,160 L580,160" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M720,160 L760,160" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="290" fill="#64748b" font-size="12" text-anchor="middle">Loss = Reconstruction Loss (BCE/MSE) + KL Divergence(q(z|x) || N(0,I))</text>
+</svg>
