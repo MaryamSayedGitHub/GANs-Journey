@@ -57,7 +57,7 @@ def main():
             real_labels = torch.ones(batch_size, 1, device=device)
             fake_labels = torch.zeros(batch_size, 1, device=device)
 
-            # ---------------- تدريب D ----------------
+            # ---------------- train D ----------------
             z = torch.randn(batch_size, args.latent_dim, 1, 1, device=device)
             fake = G(z)
 
@@ -69,7 +69,7 @@ def main():
             d_loss.backward()
             opt_D.step()
 
-            # ---------------- تدريب G ----------------
+            # ---------------- train G ----------------
             g_loss = criterion(D(fake), real_labels)
 
             opt_G.zero_grad()
@@ -89,7 +89,7 @@ def main():
     plot_losses(history, f"{args.output_dir}/loss_curve.png", title="DCGAN Losses")
     torch.save(G.state_dict(), f"{args.output_dir}/generator_final.pth")
     torch.save(D.state_dict(), f"{args.output_dir}/discriminator_final.pth")
-    print("تم التدريب وحفظ الموديلات بنجاح.")
+    print("model trained well.")
 
 
 if __name__ == "__main__":
